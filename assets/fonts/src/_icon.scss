@@ -10,8 +10,7 @@ tag:
 <%= glyph.name %>
 ```html
 <div style="font-size:32px;">
-  <span class="<%= className %>-<%= glyph.name %>"></span>
-  <% if ( /cat-/.test( glyph.name ) ) { %><span class="<%= className %>-<%= glyph.name %> CG2-icon--colored"></span><% } %>
+  <span class="<%= className %>--<%= glyph.name %>"></span>
 </div>
 ```
 <% } ); %>
@@ -19,8 +18,7 @@ tag:
 
 @font-face {
   font-family: "<%= fontName %>";
-  src: url( "<%= fontPath %><%= fontName %>.eot" );
-  src: url( "<%= fontPath %><%= fontName %>.eot?#iefix" ) format( "embedded-opentype" ),
+  src:
     url( "<%= fontPath %><%= fontName %>.woff" ) format( "woff" ),
     url( "<%= fontPath %><%= fontName %>.ttf" ) format( "truetype" );
   font-weight: normal;
@@ -47,7 +45,7 @@ tag:
   top: -0.1em;
 }
 
-<% _.each ( glyphs, function( glyph ) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.unicode.toString( 16 ).toUpperCase() %>"; }
+<% _.each ( glyphs, function( glyph ) { %>.<%= className %>--<%= glyph.name %>:before { content: "\<%= glyph.unicode.toString( 16 ).toUpperCase() %>"; }
 <% } ); %>
 
 @function getValue ( $assoc, $key ) {

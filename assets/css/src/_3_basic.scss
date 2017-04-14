@@ -1,0 +1,140 @@
+/* for dev
+   ========================================================================== */
+#__bs_notify__{
+	opacity: 0.2;
+	pointer-events: none;
+}
+
+// メディアクエリ巻き上げ順調整
+_x{
+  @include ie9    { _x:0 }
+  // @include mediaL { _x:1 }
+  @include mediaM { _x:2 }
+  @include mediaS { _x:3 }
+}
+
+/* general
+   ========================================================================== */
+html{
+	color: #303030;
+	font-family: $fontSansSerif;
+	line-height: 1.6;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	height: 100%;
+}
+
+body{
+	height: 100%;
+	margin: 0;
+}
+
+::selection {
+	text-shadow: none;
+	background: rgba( 174, 217, 17, .6 );
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	font-size: 100%;
+	font-family: inherit;
+	line-height: 1.15;
+}
+
+img{
+	border: none;
+}
+
+/* modifier: align
+   ========================================================================== */
+.-alignLeft   { text-align: left       !important; }
+.-alignRight  { text-align: right      !important; }
+.-alignCenter { text-align: center     !important; }
+.-alignTop    { vertical-align: top    !important; }
+.-alignMiddle { vertical-align: middle !important; }
+.-alignBottom { vertical-align: bottom !important; }
+
+
+/* modifier: display
+   ========================================================================== */
+:root .-disableLargeScreen{display:none;}
+
+@media screen and ( max-width: $breakpoint-middle ) and ( min-width: $breakpoint-small + 1 )  {
+  :root .-disableLargeScreen  {display: block;}
+  :root .-disableMiddleScreen {display: none !important;}
+  :root .-disableSmallScreen  {display: block;}
+
+  :root span.-disableLargeScreen,
+  :root br.-disableLargeScreen  {display: inline;}
+  :root span.-disableMiddleScreen,
+  :root br.-disableMiddleScreen {display: none !important;}
+  :root span.-disableSmallScreen,
+  :root br.-disableSmallScreen  {display: inline;}
+}
+
+@include mediaS {
+  :root .-disableLargeScreen  {display: block;}
+  :root .-disableMiddleScreen {display: block;}
+  :root .-disableSmallScreen  {display: none !important;}
+
+  :root span.-disableLargeScreen,
+  :root br.-disableLargeScreen  {display: inline;}
+  :root span.-disableMiddleScreen,
+  :root br.-disableMiddleScreen {display: inline;}
+  :root span.-disableSmallScreen,
+  :root br.-disableSmallScreen  {display: none !important;}
+}
+
+
+/* jump
+   ========================================================================== */
+
+@keyframes anim-jump {
+  0% {
+    transform: translateY( 0 ) scaleY( 1 );
+  }
+  20% {
+    transform: translateY( 2px ) scaleY( 0.6 );
+  }
+  60% {
+    transform: translateY( -5px ) scaleY( 1.1 );
+  }
+  100% {
+    transform: translateY( 0 ) scaleY( 1 );
+  }
+}
+
+
+@mixin anim-jump () {
+  animation-duration: .4s;
+  animation-name: anim-jump;
+  animation-fill-mode: forwards;
+}
+
+
+/* scale
+   ========================================================================== */
+
+@keyframes anim-scaleup {
+  0% {
+    transform: none;
+  }
+  40% {
+    transform: scale( 1.05 );
+  }
+  100% {
+    transform: none;
+  }
+}
+
+@mixin anim-scaleup () {
+  animation-duration: .6s;
+  animation-name: anim-scaleup;
+  animation-fill-mode: forwards;
+}

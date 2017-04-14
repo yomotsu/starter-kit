@@ -1,7 +1,5 @@
-
-// media queries
-// ========================================================================== */
-
+/* media queries
+   ========================================================================== */
 @mixin mediaL () {
   @media ( max-width: $breakpoint-base ) {
     @content;
@@ -20,53 +18,69 @@
   }
 }
 
-// filter for only less than IE8 (CSS Hack)
-// ==========================================================================
-@mixin ie8 () {
-  // only for IE8
-  @media \0screen {
-    @content;
-  }
-}
-
-// filter for only less than IE9 (CSS Hack)
-// ==========================================================================
+/* filter for only less than IE9 (CSS Hack)
+   ========================================================================== */
 @mixin ie9 () {
-  // only for IE9
-  @media (min-width:0\0) and (min-resolution:.001dpcm) {
-    @content;
-  }
+	// only for IE9
+	@media (min-width:0\0) and (min-resolution:.001dpcm) {
+		@content;
+	}
 }
 
-// clearfix
-// ========================================================================== */
+/* clearfix
+   ========================================================================== */
 @mixin clearfix() {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+	&:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
 }
 
-// wordbreak
-// ========================================================================== */
+/* wordbreak
+   ========================================================================== */
 @mixin wordbreak () {
-  white-space: normal;
-  word-break: break-word;
-  word-break: break-all;
-  hyphens: auto;
+	white-space: normal;
+	word-break: break-word;
+	word-break: break-all;
+	hyphens: auto;
 }
 
+/* avoidselect
+   ========================================================================== */
+@mixin avoidselect {
+	-webkit-touch-callout: none;
+	-webkit-tap-highlight-color: transparent;
+	user-select:none;
+}
 
-// tableToBlock
-// ========================================================================== */
-@mixin tableToBlock () {
-  table, tbody, tr{
-    @include clearfix();
-    display: block;
-  }
-  th, td{
-    float: left;
-    clear: left;
-  }
+/* multiline ellipsis
+   ========================================================================== */
+@mixin multiLineEllipsis ( $line-length: 3 ) {
+	$line-height: 1.3em;
+	line-height: $line-height;
+	text-align: justify;
+	text-justify: inter-ideograph;
+	overflow: hidden;
+	position: relative;
+	max-height: calc( #{$line-height * $line-length} - 1px );
+	display: block;
+	padding-right: 1em;
+	margin-right: -1em;
+	background-color: inherit;
+	&::before {
+		content: '...';
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}
+	&::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		width: 1em;
+		height: 1em;
+		margin-top: 0.2em;
+		background-color: inherit;
+	}
 }

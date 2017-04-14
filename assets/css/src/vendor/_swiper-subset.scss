@@ -1,0 +1,43 @@
+/* swiper utils
+   ========================================================================== */
+.swiper-container {
+	overflow: hidden;
+	position: relative;
+	z-index: 1; // Fix of Webkit flickering
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.swiper-wrapper {
+	box-sizing: content-box;
+	position: relative;
+	z-index: 1;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	transition-property: transform;
+}
+.swiper-container-android .swiper-slide,
+.swiper-wrapper {
+	transform: translateZ( 0 );
+}
+.swiper-container-free-mode > .swiper-wrapper {
+	transition-timing-function: ease-out;
+	margin: 0 auto;
+}
+.swiper-slide {
+	position: relative;
+	flex-shrink: 0;
+	width: 100%;
+	height: 100%;
+}
+
+// Auto Height
+.swiper-container-autoheight,
+.swiper-container-autoheight .swiper-slide {
+	height: auto;
+}
+.swiper-container-autoheight .swiper-wrapper {
+	align-items: flex-start;
+	transition-property: transform, height;
+}

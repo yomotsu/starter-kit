@@ -10,7 +10,6 @@ config.rb
 _notes
 node_modules
 
-/styleguide
 /assets/css/*.css
 /assets/css/src/_icon.scss
 /assets/js/*.js

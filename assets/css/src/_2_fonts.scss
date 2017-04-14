@@ -1,6 +1,7 @@
-/* ==========================================================================
-   Yu Gothic
+
+/* Yu Gothic
    ========================================================================== */
+
 @font-face {
   font-family: "xYuGothic";
   font-weight: normal;
@@ -21,8 +22,8 @@
        local( "Yu Gothic" );      /* family name */
 }
 
-/* ==========================================================================
-   Yu Mincho
+
+/* Yu Mincho
    ========================================================================== */
 @font-face {
   font-family: "xYuMincho";
@@ -42,17 +43,4 @@
        local( "YuMin-Demibold" ),     /* mac postscript */
        local( "YuMincho Demibold" ),  /* mac fill name (for Chrome) */
        local( "Yu Mincho" );          /* family name */
-}
-
-/* ==========================================================================
-   Zero Width
-   ========================================================================== */
-@font-face {
-  font-family: "zeroWidth";
-  src:url( "../font/zero-width.eot" );
-  src:url( "../font/zero-width.eot#iefix" ) format( "embedded-opentype" ),
-      url( "../font/zero-width.woff" ) format( "woff" ),
-      url( "../font/zero-width.ttf" ) format( "truetype" );
-  font-weight: normal;
-  font-style: normal;
 }
