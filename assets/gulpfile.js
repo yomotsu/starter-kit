@@ -3,6 +3,7 @@
 const browserSync  = require( 'browser-sync' ).create();
 
 const gulp         = require( 'gulp' );
+const rename       = require( 'gulp-rename' );
 
 // js bundler
 const webpack      = require( 'webpack' );
@@ -135,6 +136,7 @@ gulp.task( 'sass', () => {
 
 		} )
 		.pipe( postcss( processors ) )
+		.pipe( rename( { basename: 'bundle', extname: '.css' } ) )
 		.pipe( gulp.dest( './css/' ) );
 
 } );
