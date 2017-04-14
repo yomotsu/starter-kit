@@ -30,14 +30,15 @@ const browserslist = [
 ];
 
 const webpackConfig = {
-	watch: isProd,
+	watch: ! isProd,
 	resolve: {
 		alias: {}
 	},
 	entry: {
-		bundle: './js/src/main.js'
+		bundle: __dirname + '/js/src/main.js'
 	},
 	output: {
+		path:  __dirname + '/js/',
 		filename: '[name].js'
 	},
 	module: {
@@ -103,20 +104,21 @@ gulp.task( 'browser-sync', () => {
 } );
 
 
-gulp.task( 'webpack', () => {
+gulp.task( 'webpack', ( done ) => {
 
 	webpack( webpackConfig, ( error, status ) => {
 
 		const time = ( status.endTime - status.startTime ) * 0.001;
 		console.log( 'webpack after', time.toFixed( 2 ) + ' sec' );
 		browserSync.reload();
+		done();
 
 	} );
 
 } );
 
 
-gulp.task( 'sass', ( done ) => {
+gulp.task( 'sass', () => {
 
 	const processors = [
 		autoprefixer( browserslist ),
